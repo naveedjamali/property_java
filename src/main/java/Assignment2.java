@@ -372,7 +372,6 @@ public class Assignment2 {
 
     public void init() throws FileNotFoundException {
 
-
         File addressFile = new File("/home/naveed/Desktop/CourseHero-20220615T044311Z-001/CourseHero/property_java/src/main/java/address_data.txt");
         File propertiesFile = new File("/home/naveed/Desktop/CourseHero-20220615T044311Z-001/CourseHero/property_java/src/main/java/property_data.txt");
         ArrayList<Address> addresses = AddressReader.readAddressData(addressFile);
