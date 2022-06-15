@@ -261,8 +261,8 @@ public class Agency
 
 		return results;
     }
-    
-    ArrayList<Commercial> getPropertyWithHighwayAccess(){
+
+     ArrayList<Commercial> getPropertyWithHighwayAccess(){
     	ArrayList<Commercial> results = new ArrayList<>();
 
 		for (String key : properties.keySet()) {
@@ -327,7 +327,7 @@ public class Agency
     }
     
     
-    ArrayList<Residence> getPropertyWithStrata(int squareFootage){
+    ArrayList<Residence> getPropertyWithStrata(){
     	ArrayList<Residence> results = new ArrayList<>();
 
 		for (String key : properties.keySet()) {
