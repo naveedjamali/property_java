@@ -31,7 +31,7 @@ public class Assignment2 {
             System.out.println("\t2.\tResidence Queries");
             System.out.println("\t3.\tCommercial Queries");
             System.out.println("\t4.\tRetail Queries");
-            System.out.print("\t5.\tExit");
+            System.out.println("\t5.\tExit");
 
             userInput = scanner.nextLine();
 
@@ -114,15 +114,14 @@ public class Assignment2 {
 
     }
 
-    private void doSearchByType()
-    {
+    private void doSearchByType() {
         System.out.println("Enter Property Type:");
 
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         try {
-            ArrayList<Property>  addresses = agency.getPropertiesOfType(input);
+            ArrayList<Property> addresses = agency.getPropertiesOfType(input);
 
             for (Property prop : addresses) {
                 System.out.println(prop);
@@ -130,7 +129,7 @@ public class Assignment2 {
 
         } catch (Exception e) {
 
-            System.out.println("You entered invalid type" );
+            System.out.println("You entered invalid type");
         }
     }
 
@@ -141,7 +140,7 @@ public class Assignment2 {
         Scanner scanner = new Scanner(System.in);
         String streetName = scanner.nextLine();
         try {
-           ArrayList<Address>  addresses = agency.getPropertiesOn(streetName);
+            ArrayList<Address> addresses = agency.getPropertiesOn(streetName);
 
             for (Address add : addresses) {
                 System.out.println(add);
@@ -149,7 +148,7 @@ public class Assignment2 {
 
         } catch (Exception e) {
 
-            System.out.println("No Property found with PropertyID: " );
+            System.out.println("No Property found with PropertyID: ");
         }
     }
 
@@ -169,8 +168,12 @@ public class Assignment2 {
 
 
             Property[] properties = agency.getPropertiesBetween(maxPrice, maxPrice);
-            for (Property property : properties) {
-                System.out.println(property);
+            if (properties != null) {
+                for (Property property : properties) {
+                    System.out.println(property);
+                }
+            } else {
+                System.out.println("No properties found!");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -232,9 +235,9 @@ public class Assignment2 {
 
     private void searchByPools() {
 
-            for (Residence propertiesWithPool : agency.getPropertiesWithPools()) {
-                System.out.println(propertiesWithPool);
-            }
+        for (Residence propertiesWithPool : agency.getPropertiesWithPools()) {
+            System.out.println(propertiesWithPool);
+        }
 
     }
 
@@ -253,9 +256,9 @@ public class Assignment2 {
 
 
             HashMap<String, Residence> properties = agency.getPropertiesWithBedrooms(minBeds, maxBeds);
-           properties.values().forEach(residence -> {
-               System.out.println(residence);
-           });
+            properties.values().forEach(residence -> {
+                System.out.println(residence);
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -352,10 +355,16 @@ public class Assignment2 {
     private void searchBySquareFootage() {
 
         Scanner scanner = new Scanner(System.in);
-        try{
+        try {
+
+            System.out.println("Enter Square Footage: ");
             int input = Integer.parseInt(scanner.nextLine());
-            agency.getPropertyWithSquareFootage(input);
-        }catch (Exception e){
+            for (Retail retail : agency.getPropertyWithSquareFootage(input)) {
+                System.out.println(retail);
+            }
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

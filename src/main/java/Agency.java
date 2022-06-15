@@ -78,12 +78,15 @@ public class Agency
 
         for(String propertyId: propertyIds)
         {
-        	Residence property =  (Residence) properties.get(propertyId);
+            if(properties.get(propertyId).getClass()==Residence.class){
+                Residence property =  (Residence) properties.get(propertyId);
 
-            if(property.isSwimmingPool())
-            {
-                matches.add(property);
+                if(property.getSwimmingPool())
+                {
+                    matches.add(property);
+                }
             }
+
         }
 
         if(matches.size() == 0)
@@ -165,12 +168,19 @@ public class Agency
 
         for(String propertyId: propertyIds)
         {
-            Residence property =  (Residence) properties.get(propertyId);
 
-            if(property.getNumberOfBedrooms() >= minBedrooms && property.getNumberOfBedrooms() <= maxBedrooms)
-            {
-                matches.put(property.getPropertyId(), property);
-            }
+
+                Property p =   properties.get(propertyId);
+                if(p.getClass()==Residence.class){
+                    Residence property = (Residence) p;
+
+                if(property.getNumberOfBedrooms() >= minBedrooms && property.getNumberOfBedrooms() <= maxBedrooms)
+                {
+                    matches.put(property.getPropertyId(), property);
+                }
+                }
+
+
         }
 
         if(matches.size() == 0)
@@ -290,7 +300,7 @@ public class Agency
 
 			Property prop = properties.get(key);
 
-			if (prop.getType().equalsIgnoreCase("retail")) {
+			if (prop.getClass()==Retail.class) {
 
 				Retail retail = (Retail) prop;
 				if(retail.getSquareFootage()==squareFootage) {

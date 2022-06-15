@@ -34,7 +34,7 @@ public class Residence extends Property {
         return numberOfBedrooms;
     }
 
-    public boolean isSwimmingPool()
+    public boolean getSwimmingPool()
     {
         return swimmingPool;
     }
